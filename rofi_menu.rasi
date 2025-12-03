@@ -1,10 +1,56 @@
-#!/usr/bin/env bash
+/*@theme "/usr/share/rofi/themes/gruvbox-dark-soft.rasi"*/
+
+@import "colors.rasi"
+
+window {
+    width: 10%;
+    height: 34%;
+}
+
+entry {
+    placeholder: "search...";
+    cursor: pointer;
+}
 
 
-options=$(ls $HOME/.dotfiles/themes --format=single-column)
+inputbar {
+    padding:    1px;
+    spacing:    0px;
+    text-color: var(normal-foreground);
+    children:   [ prompt,textbox-prompt-colon,entry, overlay];
+}
 
-# Show the menu and store the user’s choice
-choice=$(echo -e "$options" | rofi -config $HOME/.dotfiles/theme_switcher.rasi -dmenu -i -p "Themes")
 
+element {
+  orientation: horizontal;
+  children: [ element-icon, element-text ];
+  spacing: 0px;
+}
 
-bash $HOME/.dotfiles/switch.sh $choice
+element-text {
+    font: "Gen Shin Gothic 15";
+}
+
+element-icon {
+    size: 0em;
+}
+
+listview {
+    enabled:                     true;
+    columns:                     1;
+    lines:                       6;
+    cycle:                       true;
+    dynamic:                     true;
+    scrollbar:                   false;
+    layout:                      vertical;
+    reverse:                     false;
+    fixed-height:                true;
+    fixed-columns:               true;
+    spacing:                     0px;
+    margin:                      5px;
+    padding:                     10px;
+    border:                      0px solid;
+    border-radius:               0px;
+    background-color:            transparent;
+    cursor:                      "default";
+}
